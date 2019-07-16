@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly Header component 1`] = `
+<header
+  className="st-Header st-Header--inverted"
+>
+  <div
+    className="st-Header__wrapper"
+  >
+    <div
+      className="st-Header__navLinks"
+    >
+      <a
+        className="st-Header__item"
+        href="/menu"
+      >
+        <svg
+          className="st-Header__brand"
+        >
+          logo.svg
+        </svg>
+      </a>
+      <a
+        className="st-Header__item"
+        href="/menu"
+        onClick={[Function]}
+      >
+        Menu
+      </a>
+      <a
+        className="st-Header__item"
+        href="/cart"
+        onClick={[Function]}
+      >
+        Panier
+      </a>
+    </div>
+    <div
+      className="st-Header__github"
+    >
+      <a
+        className="item right floated"
+        href="https://github.com/stleport/shopping-cart"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <svg>
+          github.svg
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+`;

@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartList renders correctly CartList component 1`] = `
+Array [
+  <h1>
+    Panier
+  </h1>,
+  <div
+    className="st-Items"
+  >
+    <div
+      className="st-Item"
+    >
+      <div
+        className="st-Item__image--small"
+      >
+        <img
+          alt="Item"
+          className="image"
+          onError={[Function]}
+          src="http://www.example.com"
+        />
+      </div>
+      <div
+        className="st-Item__content"
+      >
+        <h2>
+          Item
+        </h2>
+        <p
+          className="description"
+        >
+          Description
+        </p>
+        <div
+          className="st-Item__pricing"
+        >
+          Quantité : 
+          1
+        </div>
+        <div
+          className="st-Item__extra"
+        >
+          <button
+            className="st-Edit-button__button st-Edit-button__button--dark buttontrue"
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              className="st-Edit-button__icon--white"
+              fill="white"
+            >
+              minus.svg
+            </svg>
+          </button>
+          <button
+            className="st-Edit-button__button st-Edit-button__button--light buttontrue"
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              className="st-Edit-button__icon--dark"
+              fill="dark"
+            >
+              plus.svg
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <h3>
+    Total : 
+    0.00 €
+  </h3>,
+]
+`;

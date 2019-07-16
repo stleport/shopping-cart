@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductPicture renders correctly ProductPicture component 1`] = `
+<img
+  alt="Alt text"
+  className="image"
+  onError={[Function]}
+  src="http://example.com"
+/>
+`;

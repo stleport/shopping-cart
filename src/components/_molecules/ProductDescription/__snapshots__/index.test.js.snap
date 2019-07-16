@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductDescription renders correctly ProductDescription component 1`] = `
+Array [
+  <p
+    className="description"
+  >
+    Description
+  </p>,
+  <div
+    className="st-Item__pricing"
+  >
+    Quantité : 
+    1
+  </div>,
+]
+`;

@@ -1,0 +1,58 @@
+.st-Items {
+  display: block;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-around;
+  text-align: left;
+}
+
+.st-Item {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #EEE;
+  padding-bottom: 1.2rem;
+
+  &__content {
+    padding-bottom: .6rem;
+  }
+
+  &__pricing {
+    color: #999;
+  }
+  
+  &__description {
+    padding: .8rem;
+  }
+
+  &__extra {
+    display: flex;
+    flex: 1 1 0;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-top: 15px;
+  }
+
+  &__pricing {
+    justify-content: flex-start;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: stretch;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+  }
+
+  &__image {
+    position: relative;
+
+    &--small img {
+      width: 150px;
+      margin-right: 20px;
+    }
+  }
+
+  &__extra {
+    display: flex;
+  }
+}

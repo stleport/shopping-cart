@@ -1,0 +1,115 @@
+@import 'variables';
+@import 'globals/all';
+@import 'elements/all';
+@import 'collections/all';
+@import 'views/all';
+// @import 'collections/all';
+// @import 'views/all';
+
+// body {
+//   margin: 0;
+//   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+//     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+//     sans-serif;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+// }
+
+// code {
+//   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+//     monospace;
+// }
+
+.card img {
+  height: 200px;
+}
+
+footer {
+  position: relative !important;
+}
+
+.overlayWrapper {
+  position: relative;
+}
+
+.overlay {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  background-color: #fdf18d;
+  opacity: .8;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.Loader {
+  &--fullheight {
+    background: white;
+    height: 100vh;
+  }
+}
+
+.logo,
+.github {
+  width: 40px;
+  height: 26px;
+}
+
+.App {
+  background-color: #FFF;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.App__logo {
+  animation: App-logo-spin infinite 10s linear;
+  height: 8rem;
+  margin-bottom: 4rem;
+  pointer-events: none;
+}
+
+.App__title {
+  font-size: 1.6rem;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.App__content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  font-size: 1.6rem;
+  justify-content: center;
+}
+
+.App__footer {
+  padding: 1rem;
+}
+
+.App__link {
+  color: #e9ecf0;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+

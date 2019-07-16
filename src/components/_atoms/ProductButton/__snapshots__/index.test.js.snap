@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductButton renders correctly ProductButton component 1`] = `
+<button
+  className="st-Edit-button__button st-Edit-button__button--dark buttontrue"
+  onClick={[MockFunction]}
+  type="button"
+>
+  <svg
+    className="st-Edit-button__icon--dark"
+    fill="dark"
+  >
+    plus.svg
+  </svg>
+</button>
+`;

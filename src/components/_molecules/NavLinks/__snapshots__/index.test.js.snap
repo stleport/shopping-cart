@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavLinks rendering renders correctly NavLinks component 1`] = `
+Array [
+  <a
+    className="st-Header__item"
+    href="/menu"
+    onClick={[Function]}
+  >
+    Menu
+  </a>,
+  <a
+    className="st-Header__item"
+    href="/cart"
+    onClick={[Function]}
+  >
+    Panier
+     : 1 produits
+  </a>,
+]
+`;

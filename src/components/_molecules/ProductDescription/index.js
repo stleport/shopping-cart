@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ProductDescription = ({ description, quantity }) => (
+const ProductDescription = ({ description, title, quantity }) => (
   (
     <React.Fragment>
+      <h2>{title}</h2>
       <p className="description">
         {description}
       </p>
@@ -16,6 +17,7 @@ const ProductDescription = ({ description, quantity }) => (
 );
 
 ProductDescription.propTypes = {
+  title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   quantity: PropTypes.number.isRequired
 };

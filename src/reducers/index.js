@@ -1,3 +1,8 @@
-import shop from './shop';
+import { combineReducers } from 'redux';
+import cart from './cart';
+import products from './products';
 
-export default shop;
+export default combineReducers({
+  cart,
+  products
+});

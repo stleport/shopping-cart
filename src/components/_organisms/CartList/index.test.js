@@ -5,20 +5,19 @@ import { Cart } from '.';
 
 function CartListSetup() {
   const props = {
-    cart: [
-      {
+    products: [],
+    cart: {
+      items: [{
         title: 'Item',
         productId: 1,
         quantity: 1,
         images: ['http://www.example.com'],
         description: 'Description'
-      },
-    ],
-    addToCart: jest.fn(),
-    addQuantity: jest.fn(),
-    subQuantity: jest.fn(),
-    removeFromCart: jest.fn(),
-    total: 0
+      }]
+    },
+    onAddToCart: jest.fn(),
+    onSubQuantity: jest.fn(),
+    onRemoveFromCart: jest.fn()
   }; 
 
   const CartListJSX = (

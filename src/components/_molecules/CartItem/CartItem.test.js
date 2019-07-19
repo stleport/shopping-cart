@@ -3,17 +3,24 @@ import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
 import CartItem from '.';
 
-function CartItemSetup(newProps = {}) {
+function CartItemSetup() {
   const props = {
+    cart: {
+      items: [{
+        productId: 2,
+        quantity: 2 
+      }],
+      total: 0
+    },
     cartItem: { 
+      productId: 2,
       title: 'Item',
       description: 'Description',
-      images: ['http://example.com'],
-      quantity: 1
+      images: ['http://example.com']
     },
-    addQuantity: jest.fn(),
-    subQuantity: jest.fn(),
-    removeFromCart: jest.fn()
+    onAddToCart: jest.fn(),
+    onSubQuantity: jest.fn(),
+    onRemoveFromCart: jest.fn()
   }; 
 
   const CartItemJSX = (

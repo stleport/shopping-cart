@@ -1,30 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CartItem from '../../_molecules/CartItem';
-import { financialFormat } from '../../../utils';
 
 export const Cart = ({ 
   cart,
-  // products,
-  total, 
-  addQuantity, 
-  subQuantity, 
-  removeFromCart 
+  products,
+  onAddToCart, 
+  onSubQuantity, 
+  onRemoveFromCart 
 }) => {
-  const hasProducts = cart.length > 0;
-  // const productsInCart = products.filter(p => cart.find(i => p.product.productId === i.productId));
-  const cartList = hasProducts 
+  const productsInCart = products
+      .filter(p => cart.items
+      .find(e => e.productId === p.product.productId));
+
+  const cartList = productsInCart.length > 0
     ? (
-      cart.map(item => (
-        <div 
-          key={item.productId} 
-          className="st-Items"
-        >
+      productsInCart.map(item => (
+        <div className="st-Items" key={item.product.productId}>
           <CartItem 
-            cartItem={item} 
-            addQuantity={addQuantity} 
-            subQuantity={subQuantity} 
-            removeFromCart={removeFromCart} 
+            cart={cart}
+            cartItem={item.product} 
+            onAddToCart={onAddToCart} 
+            onSubQuantity={onSubQuantity} 
+            onRemoveFromCart={onRemoveFromCart} 
           />
         </div>
       ))) 
@@ -36,25 +34,30 @@ export const Cart = ({
     <React.Fragment>
       <h1>Panier</h1>
       {cartList}
-      <h3>
-        Total :&#160;
-        { financialFormat(total) }
-      </h3>
     </React.Fragment>
   );
 };
 
+Cart.defaultProps = {
+  cart: {
+    items: [],
+    total: 0
+  }
+};
+
 Cart.propTypes = {
-  cart: PropTypes.arrayOf(PropTypes.shape({
+  products: PropTypes.arrayOf(PropTypes.shape({
     productId: PropTypes.number
   })).isRequired,
-  // products: PropTypes.arrayOf(PropTypes.shape({
-  //   productId: PropTypes.number 
-  // })).isRequired,
-  addQuantity: PropTypes.func.isRequired,
-  subQuantity: PropTypes.func.isRequired,
-  removeFromCart: PropTypes.func.isRequired,
-  total: PropTypes.number.isRequired
+  cart: PropTypes.shape({
+    items: PropTypes.arrayOf(PropTypes.shape({
+      productId: PropTypes.number.isRequired,
+      quantity: PropTypes.number.isRequired
+    }))
+  }),
+  onAddToCart: PropTypes.func.isRequired,
+  onSubQuantity: PropTypes.func.isRequired,
+  onRemoveFromCart: PropTypes.func.isRequired
 };
 
 export default Cart;

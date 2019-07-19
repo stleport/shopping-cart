@@ -1,49 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  ReactComponent as Plus
-} from '../../../assets/images/plus.svg';
-import {
-  ReactComponent as Minus
-} from '../../../assets/images/minus.svg';
+import ButtonIcon from '../ButtonIcon';
 
 const ProductButton = ({
   iconName,
   iconColor,
   bgColor,
   enabled,
-  onClick
+  onAddToCart,
+  onSubQuantity
 }) => {
-  const classNames = function classNames() {
+  const classNames = () => {
     const bgColorModifier = bgColor === 'dark' ? '--dark' : '--light';
     const enabledAttribute = enabled || ' disabled';
     const button = `st-Edit-button__button st-Edit-button__button${bgColorModifier} button${enabledAttribute}`;
-    const icon = `st-Edit-button__icon--${iconColor}`;
-    return {
-      button,
-      icon
-    };
+    return button;
   };
 
   return ( 
     <React.Fragment>
-      <button
-        className={classNames().button}
-        type="button"
-        onClick={onClick}
-      >
-        {iconName === 'plus' ? (
-          <Plus 
-            fill={iconColor}
-            className={classNames().icon}
-          />
-        ) : (
-          <Minus 
-            fill={iconColor}
-            className={classNames().icon}
-          />
-        )}
-      </button>
+      {iconName === 'plus' ? (
+        <ButtonIcon 
+          onChangeQuantity={onAddToCart}
+          iconName="plus"
+          iconColor={iconColor}
+          buttonStyle={classNames()}
+        />
+      ) : (
+        <ButtonIcon 
+          onChangeQuantity={onSubQuantity}
+          iconName="minus"
+          iconColor={iconColor}
+          buttonStyle={classNames()}
+        />
+      )}
     </React.Fragment>
   );
 };
@@ -52,12 +42,18 @@ ProductButton.defaultProps = {
   enabled: true
 };
 
+ProductButton.defaultProps = {
+  onSubQuantity: null,
+  onAddToCart: null
+};
+
 ProductButton.propTypes = {
   iconName: PropTypes.string.isRequired,
   iconColor: PropTypes.string.isRequired,
   bgColor: PropTypes.string.isRequired,
   enabled: PropTypes.bool,
-  onClick: PropTypes.func.isRequired
+  onAddToCart: PropTypes.func,
+  onSubQuantity: PropTypes.func
 };
 
 export default ProductButton;

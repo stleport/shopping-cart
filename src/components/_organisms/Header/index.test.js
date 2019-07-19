@@ -27,5 +27,4 @@ describe('Header', () => {
     const HeaderComponent = renderer.create(HeaderJSX).toJSON();
     expect(HeaderComponent).toMatchSnapshot();
   });
-  
 });

@@ -3,12 +3,17 @@ import { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import { BrowserRouter } from 'react-router-dom';
 import { NavLinks } from '.';
+import { pluralize } from '../../../utils';
 
 function NavLinksSetup() {
   const props = {
-    cart: [{
-      productId: 2
-    }]
+    cart: {
+      items: [{
+        productId: 2,
+        quantity: 2
+      }],
+      total: 0
+    }
   };
 
   const NavLinksJSX = (
@@ -45,6 +50,10 @@ describe('NavLinks links', () => {
   });
 
   it('should display number of products in cart when the cart is not empty', () => {
-    expect(NavLinksComponent.find('a[href="/cart"]').text()).toMatch(/1 produit/);
+    expect(NavLinksComponent.find('a[href="/cart"]').text()).toMatch(/\d+ produits?/);
+  });
+
+  it('should pluralize "produit" when more than one product in cart', () => {
+    expect(`produit${pluralize(2)}`).toMatch(/^produits$/);
   });
 });

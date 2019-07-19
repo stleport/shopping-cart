@@ -8,12 +8,12 @@ import { financialFormat } from '../../../utils';
 export const ProductCard = ({ 
   product,
   cart,
-  addToCart,
-  addQuantity,
-  subQuantity
+  onAddToCart,
+  onSubQuantity
 }) => {
+  
   const isProductAvailable = product.inventoryLevel === 'AVAILABLE';
-  const productInCart = cart.find(e => e.productId === product.productId);
+  const productInCart = cart.items.find(c => c.productId === product.productId);
   return (
     <div className="st-Card" key={product.productId}>
       <div className="st-Card__image">
@@ -33,31 +33,21 @@ export const ProductCard = ({
           { financialFormat(product.price) }
         </div>
         <div className="st-Card__actions">
-          { productInCart && (
+          {productInCart && (
+            <ProductButton 
+              iconName="minus"
+              iconColor="white"
+              bgColor="dark"
+              onSubQuantity={() => onSubQuantity(product.productId, productInCart.quantity)}
+            />
+          )}
           <ProductButton 
-            iconName="minus"
-            iconColor="white"
-            bgColor="dark"
-            onClick={() => subQuantity(product.productId, productInCart.quantity)}
+            iconName="plus"
+            iconColor="dark"
+            bgColor="light"
+            enabled={isProductAvailable}
+            onAddToCart={() => onAddToCart(product.productId)}
           />
-          )}
-          {productInCart ? (
-            <ProductButton 
-              iconName="plus"
-              iconColor="dark"
-              bgColor="light"
-              enabled={isProductAvailable}
-              onClick={() => addQuantity(product.productId)}
-            />
-          ) : (
-            <ProductButton 
-              iconName="plus"
-              iconColor="dark"
-              bgColor="light"
-              enabled={isProductAvailable}
-              onClick={() => addToCart(product.productId)}        
-            />
-          )}
         </div>
       </div>
     </div>
@@ -74,12 +64,15 @@ ProductCard.propTypes = {
     quantity: PropTypes.number,
     price: PropTypes.number
   }).isRequired,
-  cart: PropTypes.arrayOf(PropTypes.shape({
-    productId: PropTypes.number 
-  })).isRequired,
-  addToCart: PropTypes.func.isRequired,
-  addQuantity: PropTypes.func.isRequired,
-  subQuantity: PropTypes.func.isRequired
+  cart: PropTypes.shape({
+    items: PropTypes.arrayOf(PropTypes.shape({
+      productId: PropTypes.number.isRequired,
+      quantity: PropTypes.number.isRequired
+    })).isRequired,
+    total: PropTypes.number.isRequired
+  }).isRequired,
+  onAddToCart: PropTypes.func.isRequired,
+  onSubQuantity: PropTypes.func.isRequired
 };
 
 export default ProductCard;

@@ -33,6 +33,7 @@ exports[`Header renders correctly Header component 1`] = `
         onClick={[Function]}
       >
         Panier
+        
       </a>
     </div>
     <div
@@ -44,7 +45,9 @@ exports[`Header renders correctly Header component 1`] = `
         rel="noopener noreferrer"
         target="_blank"
       >
-        <svg>
+        <svg
+          className="st-Header__githublogo"
+        >
           github.svg
         </svg>
       </a>

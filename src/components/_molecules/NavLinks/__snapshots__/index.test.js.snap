@@ -15,7 +15,8 @@ Array [
     onClick={[Function]}
   >
     Panier
-     : 1 produits
+     : 1 produit
+    
   </a>,
 ]
 `;

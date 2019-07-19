@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { pluralize } from '../../../utils';
 
 const ProductOverlay = ({ quantity }) => (
   (
@@ -8,7 +9,7 @@ const ProductOverlay = ({ quantity }) => (
         <h3>
           {quantity}
           &#160;portion
-          {(quantity > 1) && 's'}
+          {pluralize(quantity)}
           &#160;dans votre Frichti
         </h3>
       </div>

@@ -1,11 +1,10 @@
 import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
-  ADD_QUANTITY,
   SUB_QUANTITY,
   FETCH_PRODUCTS_PENDING,
   FETCH_PRODUCTS_SUCCESS,
-  FETCH_PRODUCTS_ERROR
+  FETCH_PRODUCTS_ERROR,
 } from '../constants/ActionTypes';
 import { PRODUCTS_API_URL } from '../constants';
 
@@ -16,11 +15,6 @@ export const addToCart = productId => ({
 
 export const removeFromCart = productId => ({
   type: REMOVE_FROM_CART,
-  productId
-});
-
-export const addQuantity = productId => ({
-  type: ADD_QUANTITY,
   productId
 });
 
@@ -40,10 +34,10 @@ export function fetchProductsPending() {
   };
 }
 
-export function fetchProductsSuccess(products) {
+export function fetchProductsSuccess(payload) {
   return {
     type: FETCH_PRODUCTS_SUCCESS,
-    products
+    payload
 };
 }
 
@@ -56,9 +50,9 @@ export function fetchProductsError(error) {
 
 export function getProductList() {
   // eslint-disable-next-line func-names
-  return function (dispatch) {
+  return (dispatch) => {
       dispatch(fetchProductsPending());
-      fetch(PRODUCTS_API_URL)
+      return fetch(PRODUCTS_API_URL)
         .then(res => res.json())
         .then((res) => {
           if (res.error) {

@@ -2,6 +2,9 @@
 
 exports[`ProductDescription renders correctly ProductDescription component 1`] = `
 Array [
+  <h2>
+    Title
+  </h2>,
   <p
     className="description"
   >
@@ -11,7 +14,7 @@ Array [
     className="st-Item__pricing"
   >
     Quantité : 
-    1
+    2
   </div>,
 ]
 `;

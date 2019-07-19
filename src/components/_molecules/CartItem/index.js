@@ -4,24 +4,23 @@ import ProductPicture from '../../_atoms/ProductPicture';
 import ProductDescription from '../ProductDescription';
 import ProductButton from '../../_atoms/ProductButton';
 
-const CartList = ({ 
+const CartItem = ({
+  cart,
   cartItem,
-  addQuantity,
-  subQuantity
-}) => (
-  (
+  onAddToCart,
+  onSubQuantity
+}) => {
+  const item = cart.items.find(c => c.productId === cartItem.productId);
+  return (
     <div className="st-Item">
-      <div className="st-Item__image--small">
-        <ProductPicture 
-          source={cartItem.images[0]} 
-          altText={cartItem.title} 
-        />
+      <div className="st-Item__image st-Item__image--small">
+        <ProductPicture source={cartItem.images[0]} altText={cartItem.title} />
       </div>
       <div className="st-Item__content">
-        <h2>{cartItem.title}</h2>
         <ProductDescription 
+          title={cartItem.title} 
           description={cartItem.description} 
-          quantity={cartItem.quantity} 
+          quantity={item.quantity} 
         />
         <div className="st-Item__extra">
           <ProductButton 
@@ -29,32 +28,38 @@ const CartList = ({
             iconAlign="right" 
             iconColor="white"
             bgColor="dark"
-            onClick={() => subQuantity(cartItem.productId, cartItem.quantity)}
+            onSubQuantity={
+              () => onSubQuantity(cartItem.productId, item.quantity)
+            }
           />
           <ProductButton 
             iconName="plus"
             iconAlign="right"
             iconColor="dark"
             bgColor="light"
-            onClick={() => addQuantity(cartItem.productId)}
+            onAddToCart={() => onAddToCart(cartItem.productId)}
           />
         </div>
       </div>
     </div>
-  )
-);
+  );
+};
 
-CartList.propTypes = {
+CartItem.propTypes = {
   cartItem: PropTypes.shape({
-    // productId: PropTypes.number.isRequired,
     productId: PropTypes.number,
-    quantity: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     images: PropTypes.arrayOf(PropTypes.string)
   }).isRequired,
-  addQuantity: PropTypes.func.isRequired,
-  subQuantity: PropTypes.func.isRequired
+  cart: PropTypes.shape({
+    items: PropTypes.arrayOf(PropTypes.shape({
+      productId: PropTypes.number.isRequired,
+      quantity: PropTypes.number.isRequired
+    }))
+  }).isRequired,
+  onAddToCart: PropTypes.func.isRequired,
+  onSubQuantity: PropTypes.func.isRequired
 };
 
-export default CartList;
+export default CartItem;

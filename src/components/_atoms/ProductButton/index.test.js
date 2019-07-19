@@ -11,7 +11,9 @@ function ProductButtonSetup(newProps = {}) {
     iconColor: 'dark',
     enabled: true,
     bgColor: 'dark',
-    onClick: jest.fn()
+    onClick: jest.fn(),
+    onAddToCart: jest.fn(),
+    onSubQuantity: jest.fn()
   };
 
   const ProductButtonJSX = (
@@ -27,18 +29,12 @@ function ProductButtonSetup(newProps = {}) {
 }
 
 describe('ProductButton', () => {
-
   it('renders correctly ProductButton component', () => {
     const { ProductButtonJSX } = ProductButtonSetup();
     const ProductButtonComponent = renderer.create(ProductButtonJSX).toJSON();
     expect(ProductButtonComponent).toMatchSnapshot();
   });
 
-  it('click handler is called onClick', () => {
-    const { ProductButtonComponent, props } = ProductButtonSetup();
-    ProductButtonComponent.find('button').simulate('click');
-    expect(props.onClick).toHaveBeenCalled();
-  });
   it('button should not be disabled when enabled prop is true', () => {
     const { ProductButtonComponent } = ProductButtonSetup();
     expect(ProductButtonComponent.find('button').hasClass('disabled')).toBe(false);
@@ -46,5 +42,15 @@ describe('ProductButton', () => {
   it('button should be disabled when enabled prop is false', () => {
     const { ProductButtonComponent } = ProductButtonSetup({ enabled: false });
     expect(ProductButtonComponent.find('button').hasClass('disabled')).toBe(true);
+  });
+  it('onAddToCart handler should be call on plus button click', () => {
+    const { ProductButtonComponent, props } = ProductButtonSetup();
+    ProductButtonComponent.find('button').simulate('click');
+    expect(props.onAddToCart).toHaveBeenCalled();
+  });
+  it('onSubQuantity handler should be call on minus button click', () => {
+    const { ProductButtonComponent, props } = ProductButtonSetup({ iconName: 'minus' });
+    ProductButtonComponent.find('button').simulate('click');
+    expect(props.onSubQuantity).toHaveBeenCalled();
   });
 });

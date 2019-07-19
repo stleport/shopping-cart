@@ -9,36 +9,31 @@ import {
   getProductList, 
   addToCart, 
   removeFromCart, 
-  addQuantity, 
   subQuantity 
 } from '../../actions';
 
 export function App({ 
   cart, 
-  total,
   products, 
-  pending, 
   getProductListConnect,
   addToCartConnect,
   removeFromCartConnect,
-  addQuantityConnect,
   subQuantityConnect
 }) {
   return (
     <React.Fragment>
-      <Header cart={cart} total={total} />
+      <Header cart={cart} />
       <Redirect from="/" to="/menu" />
       <Route 
         path="/cart" 
         render={() => (
           <Cart 
             cart={cart} 
-            products={products} 
-            total={total} 
-            addToCart={addToCartConnect} 
-            removeFromCart={removeFromCartConnect} 
-            addQuantity={addQuantityConnect} 
-            subQuantity={subQuantityConnect} 
+            total={cart.total}
+            products={products.products} 
+            onAddToCart={addToCartConnect} 
+            onRemoveFromCart={removeFromCartConnect} 
+            onSubQuantity={subQuantityConnect} 
           />
         )}
       />
@@ -46,14 +41,13 @@ export function App({
         path="/menu" 
         render={() => (
           <Menu 
-            products={products} 
+            products={products.products} 
             cart={cart}
-            pending={pending} 
+            pending={products.pending} 
             getProductList={getProductListConnect}
-            addToCart={addToCartConnect}
-            addQuantity={addQuantityConnect}
-            subQuantity={subQuantityConnect}
-            removeFromCart={removeFromCartConnect}
+            onAddToCart={addToCartConnect}
+            onSubQuantity={subQuantityConnect}
+            onRemoveFromCart={removeFromCartConnect}
           />
         )} 
       />
@@ -63,7 +57,6 @@ export function App({
 
 const mapDispatchToProps = dispatch => ({
   addToCartConnect: id => dispatch(addToCart(id)),
-  addQuantityConnect: id => dispatch(addQuantity(id)),
   subQuantityConnect: (id, quantity) => dispatch(subQuantity(id, quantity)),
   removeFromCartConnect: id => dispatch(removeFromCart(id)),
   getProductListConnect: () => dispatch(getProductList())
@@ -71,25 +64,37 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   cart: state.cart,
-  products: state.products,
-  total: state.total,
-  pending: state.pending
+  products: state.products
 });
 
+App.defaultProps = {
+  cart: {
+    items: [],
+    total: 0
+  },
+  products: {
+    pending: false
+  }
+};
+
 App.propTypes = {
-  cart: PropTypes.arrayOf(PropTypes.shape({
-    productId: PropTypes.number 
-  })).isRequired,
-  total: PropTypes.number.isRequired,
-  products: PropTypes.arrayOf(PropTypes.shape({
-    productId: PropTypes.number
-  })).isRequired,
+  cart: PropTypes.shape({
+    items: PropTypes.arrayOf(PropTypes.shape({
+      productId: PropTypes.number.isRequired,
+      quantity: PropTypes.number
+    })),
+    total: PropTypes.number
+  }),
+  products: PropTypes.shape({
+    pending: PropTypes.bool.isRequired,
+    products: PropTypes.arrayOf(PropTypes.shape({
+      productId: PropTypes.number
+    })).isRequired 
+  }),
   getProductListConnect: PropTypes.func.isRequired,
   addToCartConnect: PropTypes.func.isRequired,
   removeFromCartConnect: PropTypes.func.isRequired,
-  addQuantityConnect: PropTypes.func.isRequired,
-  subQuantityConnect: PropTypes.func.isRequired,
-  pending: PropTypes.bool.isRequired
+  subQuantityConnect: PropTypes.func.isRequired
 };
 
 export default connect(

@@ -21,7 +21,7 @@ export const Header = ({ cart }) => (
             target="_blank" 
             rel="noopener noreferrer" 
           >
-            <Github />
+            <Github className="st-Header__githublogo" />
           </a>
         </div>
       </div>
@@ -29,17 +29,21 @@ export const Header = ({ cart }) => (
   )
 );
 
-// const mapStateToProps = state => ({
-//   cart: state.cart
-// });
 Header.defaultProps = {
-  cart: []
+  cart: {
+    items: [],
+    total: 0
+  }
 };
 
 Header.propTypes = {
-  cart: PropTypes.arrayOf(PropTypes.shape({
-    productId: PropTypes.number 
-  }))
+  cart: PropTypes.shape({
+    items: PropTypes.arrayOf(PropTypes.shape({
+      productId: PropTypes.number.isRequired,
+      quantity: PropTypes.number.isRequired
+    })).isRequired,
+    total: PropTypes.number
+  })
 };
 
 export default Header;

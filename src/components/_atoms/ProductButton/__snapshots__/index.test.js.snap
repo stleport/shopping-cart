@@ -6,11 +6,11 @@ exports[`ProductButton renders correctly ProductButton component 1`] = `
   onClick={[MockFunction]}
   type="button"
 >
-  <svg
+  <img
+    alt="plus"
     className="st-Edit-button__icon--dark"
-    fill="dark"
-  >
-    plus.svg
-  </svg>
+    fill="white"
+    src="plus.svg"
+  />
 </button>
 `;

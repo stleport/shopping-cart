@@ -16,11 +16,4 @@ describe('sync actions', () => {
       productId: 2
     });
   });
-
-  it('addQuantity should create ADD_QUANTITY action', () => {
-    expect(actions.addToCart(2)).toEqual({
-      type: types.ADD_TO_CART,
-      productId: 2
-    });
-  });
 });

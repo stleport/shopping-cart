@@ -4,15 +4,13 @@ import { pluralize } from '../../../utils';
 
 const ProductOverlay = ({ quantity }) => (
   (
-    <div>
-      <div className="st-Card__overlay">
-        <h3>
-          {quantity}
-          &#160;portion
-          {pluralize(quantity)}
-          &#160;dans votre Frichti
-        </h3>
-      </div>
+    <div className="st-Card__overlay">
+      <h3>
+        {quantity}
+        &#160;portion
+        {pluralize(quantity)}
+        &#160;dans votre Frichti
+      </h3>
     </div>
   )
 );

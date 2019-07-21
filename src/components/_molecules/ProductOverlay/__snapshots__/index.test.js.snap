@@ -1,16 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProductOverlay renders correctly ProductOverlay component 1`] = `
-<div>
-  <div
-    className="st-Card__overlay"
-  >
-    <h3>
-      2
-       portion
-      s
-       dans votre Frichti
-    </h3>
-  </div>
+<div
+  className="st-Card__overlay"
+>
+  <h3>
+    2
+     portion
+    s
+     dans votre Frichti
+  </h3>
 </div>
 `;

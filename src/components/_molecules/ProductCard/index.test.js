@@ -13,7 +13,7 @@ function ProductCardSetup() {
       productId: 1,
       title: 'Sablés',
       inventoryLevel: 'AVAILABLE',
-      shortDescription: 'Description',
+      description: 'Description',
       images: ['http://example.com/image.jpg']
     },
     cart: {

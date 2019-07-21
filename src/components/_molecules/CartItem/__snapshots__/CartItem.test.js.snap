@@ -7,35 +7,49 @@ exports[`CartItem renders correctly CartItem component 1`] = `
   <div
     className="st-Item__image st-Item__image--small"
   >
-    <img
-      alt="Item"
-      className="image"
-      onError={[Function]}
-      src="http://example.com"
-    />
+    <div
+      className="st-Item__image"
+    >
+      <img
+        alt="Item"
+        className="image"
+        onError={[Function]}
+        src="http://example.com"
+      />
+    </div>
   </div>
   <div
     className="st-Item__content"
   >
-    <h2>
-      Item
-    </h2>
-    <p
-      className="description"
-    >
-      Description
-    </p>
     <div
-      className="st-Item__pricing"
+      className="st-Item__description"
     >
-      Quantité : 
-      2
+      <h2
+        className="st-Item__title st-Item__title--big"
+      >
+        Item
+      </h2>
+      <div
+        className="st-Item__content"
+      >
+        <p
+          className="st-Item__description-text"
+        >
+          Description
+        </p>
+        <div
+          className="st-Item__pricing"
+        >
+          Quantité : 
+          2
+        </div>
+      </div>
     </div>
     <div
-      className="st-Item__extra"
+      className="st-Item__actions"
     >
       <button
-        className="st-Edit-button__button st-Edit-button__button--dark button disabled"
+        className="st-Edit-button__button st-Edit-button__button--dark"
         onClick={[Function]}
         type="button"
       >
@@ -47,7 +61,7 @@ exports[`CartItem renders correctly CartItem component 1`] = `
         />
       </button>
       <button
-        className="st-Edit-button__button st-Edit-button__button--light button disabled"
+        className="st-Edit-button__button st-Edit-button__button--light"
         onClick={[Function]}
         type="button"
       >

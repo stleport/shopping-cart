@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Product from '../../_molecules/Product';
+import ProductCard from '../../_molecules/ProductCard';
 
 const ProductList = ({ 
   products,
@@ -17,7 +17,7 @@ const ProductList = ({
   const hasProducts = (products.length > 0) || '';
   const productList = hasProducts ? (
       products.map(item => (
-        <Product 
+        <ProductCard 
           key={item.product.productId} 
           product={item.product} 
           cart={cart}

@@ -15,11 +15,11 @@ export const Cart = ({
 
   const cartList = productsInCart.length > 0
     ? (
-      productsInCart.map(item => (
-        <div className="st-Items" key={item.product.productId}>
+      productsInCart.map(cartItem => (
+        <div className="st-Items" key={cartItem.product.productId}>
           <CartItem 
             cart={cart}
-            cartItem={item.product} 
+            cartItem={cartItem.product} 
             onAddToCart={onAddToCart} 
             onSubQuantity={onSubQuantity} 
             onRemoveFromCart={onRemoveFromCart} 

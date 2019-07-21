@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ProductPicture from '../../_atoms/ProductPicture';
 import ProductDescription from '../ProductDescription';
-import ProductButton from '../../_atoms/ProductButton';
+import ProductButtons from '../../_molecules/ProductButtons';
 
 const CartItem = ({
   cart,
@@ -11,6 +11,8 @@ const CartItem = ({
   onSubQuantity
 }) => {
   const item = cart.items.find(c => c.productId === cartItem.productId);
+  const productInCart = true;
+  const isProductAvailable = true;
   return (
     <div className="st-Item">
       <div className="st-Item__image st-Item__image--small">
@@ -21,25 +23,16 @@ const CartItem = ({
           title={cartItem.title} 
           description={cartItem.description} 
           quantity={item.quantity} 
+          view="cart"
         />
-        <div className="st-Item__extra">
-          <ProductButton 
-            iconName="minus"
-            iconAlign="right" 
-            iconColor="white"
-            bgColor="dark"
-            onSubQuantity={
-              () => onSubQuantity(cartItem.productId, item.quantity)
-            }
-          />
-          <ProductButton 
-            iconName="plus"
-            iconAlign="right"
-            iconColor="dark"
-            bgColor="light"
-            onAddToCart={() => onAddToCart(cartItem.productId)}
-          />
-        </div>
+        <ProductButtons
+          isProductAvailable={isProductAvailable}
+          productInCart={productInCart}
+          productId={cartItem.productId}
+          onAddToCart={onAddToCart}
+          onSubQuantity={onSubQuantity}
+          quantity={productInCart ? item.quantity : 0 }
+        />
       </div>
     </div>
   );

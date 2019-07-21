@@ -12,8 +12,7 @@ function ProductButtonSetup(newProps = {}) {
     enabled: true,
     bgColor: 'dark',
     onClick: jest.fn(),
-    onAddToCart: jest.fn(),
-    onSubQuantity: jest.fn()
+    onChangeQuantity: jest.fn()
   };
 
   const ProductButtonJSX = (
@@ -34,23 +33,14 @@ describe('ProductButton', () => {
     const ProductButtonComponent = renderer.create(ProductButtonJSX).toJSON();
     expect(ProductButtonComponent).toMatchSnapshot();
   });
-
-  it('button should not be disabled when enabled prop is true', () => {
-    const { ProductButtonComponent } = ProductButtonSetup();
-    expect(ProductButtonComponent.find('button').hasClass('disabled')).toBe(false);
-  });
-  it('button should be disabled when enabled prop is false', () => {
-    const { ProductButtonComponent } = ProductButtonSetup({ enabled: false });
-    expect(ProductButtonComponent.find('button').hasClass('disabled')).toBe(true);
-  });
   it('onAddToCart handler should be call on plus button click', () => {
     const { ProductButtonComponent, props } = ProductButtonSetup();
     ProductButtonComponent.find('button').simulate('click');
-    expect(props.onAddToCart).toHaveBeenCalled();
+    expect(props.onChangeQuantity).toHaveBeenCalled();
   });
-  it('onSubQuantity handler should be call on minus button click', () => {
-    const { ProductButtonComponent, props } = ProductButtonSetup({ iconName: 'minus' });
-    ProductButtonComponent.find('button').simulate('click');
-    expect(props.onSubQuantity).toHaveBeenCalled();
-  });
+  // it('onSubQuantity handler should be call on minus button click', () => {
+  //   const { ProductButtonComponent, props } = ProductButtonSetup({ iconName: 'minus' });
+  //   ProductButtonComponent.find('button').simulate('click');
+  //   expect(props.onSubQuantity).toHaveBeenCalled();
+  // });
 });

@@ -13,28 +13,28 @@ exports[`ProductCard renders correctly ProductCard component 1`] = `
       onError={[Function]}
       src="http://example.com/image.jpg"
     />
-    <div>
-      <div
-        className="st-Card__overlay"
-      >
-        <h3>
-          2
-           portion
-          s
-           dans votre Frichti
-        </h3>
-      </div>
+    <div
+      className="st-Card__overlay"
+    >
+      <h3>
+        2
+         portion
+        s
+         dans votre Frichti
+      </h3>
     </div>
   </div>
   <div
-    className="st-Card__content"
+    className="st-Card__description"
   >
-    <h4>
+    <h2
+      className="st-Card__title st-Card__title--small"
+    >
       Sablés
-    </h4>
+    </h2>
   </div>
   <div
-    className="st-Card__extra"
+    className="st-Card__footer"
   >
     <div
       className="st-Card__pricing"
@@ -45,7 +45,7 @@ exports[`ProductCard renders correctly ProductCard component 1`] = `
       className="st-Card__actions"
     >
       <button
-        className="st-Edit-button__button st-Edit-button__button--dark button disabled"
+        className="st-Edit-button__button st-Edit-button__button--dark"
         onClick={[Function]}
         type="button"
       >
@@ -57,7 +57,7 @@ exports[`ProductCard renders correctly ProductCard component 1`] = `
         />
       </button>
       <button
-        className="st-Edit-button__button st-Edit-button__button--light buttontrue"
+        className="st-Edit-button__button st-Edit-button__button--light"
         onClick={[Function]}
         type="button"
       >

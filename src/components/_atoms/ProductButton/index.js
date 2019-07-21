@@ -7,33 +7,18 @@ const ProductButton = ({
   iconColor,
   bgColor,
   enabled,
-  onAddToCart,
-  onSubQuantity
+  onChangeQuantity
 }) => {
-  const classNames = () => {
-    const bgColorModifier = bgColor === 'dark' ? '--dark' : '--light';
-    const enabledAttribute = enabled || ' disabled';
-    const button = `st-Edit-button__button st-Edit-button__button${bgColorModifier} button${enabledAttribute}`;
-    return button;
-  };
-
+  const buttonStyle = `st-Edit-button__button st-Edit-button__button${bgColor ==='dark' ? '--dark' : '--light'}`;
   return ( 
     <React.Fragment>
-      {iconName === 'plus' ? (
-        <ButtonIcon 
-          onChangeQuantity={onAddToCart}
-          iconName="plus"
-          iconColor={iconColor}
-          buttonStyle={classNames()}
-        />
-      ) : (
-        <ButtonIcon 
-          onChangeQuantity={onSubQuantity}
-          iconName="minus"
-          iconColor={iconColor}
-          buttonStyle={classNames()}
-        />
-      )}
+      <ButtonIcon 
+        buttonStyle={buttonStyle}
+        iconName={iconName}
+        iconColor={iconColor}
+        onChangeQuantity={onChangeQuantity}
+        enabled={enabled}
+      />
     </React.Fragment>
   );
 };

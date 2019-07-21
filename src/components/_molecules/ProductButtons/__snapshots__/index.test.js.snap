@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItem renders correctly CartItem component 1`] = `
+<div
+  className="st-Item__actions"
+>
+  <button
+    className="st-Edit-button__button st-Edit-button__button--dark"
+    onClick={[Function]}
+    type="button"
+  >
+    <img
+      alt="minus"
+      className="st-Edit-button__icon--white"
+      fill="white"
+      src="minus.svg"
+    />
+  </button>
+  <button
+    className="st-Edit-button__button st-Edit-button__button--light"
+    onClick={[Function]}
+    type="button"
+  >
+    <img
+      alt="plus"
+      className="st-Edit-button__icon--dark"
+      fill="white"
+      src="plus.svg"
+    />
+  </button>
+</div>
+`;

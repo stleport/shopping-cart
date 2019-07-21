@@ -3,24 +3,12 @@ import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
 import CartItem from '.';
 
-function CartItemSetup() {
+function ProductButtons() {
   const props = {
-    cart: {
-      items: [{
-        productId: 2,
-        quantity: 2 
-      }],
-      total: 0
-    },
-    cartItem: { 
-      productId: 2,
-      title: 'Item',
-      description: 'Description',
-      images: ['http://example.com']
-    },
     onAddToCart: jest.fn(),
     onSubQuantity: jest.fn(),
-    onRemoveFromCart: jest.fn()
+    onRemoveFromCart: jest.fn(),
+    quantity: 2
   }; 
 
   const CartItemJSX = (
@@ -37,8 +25,13 @@ function CartItemSetup() {
 
 describe('CartItem', () => {
   it('renders correctly CartItem component', () => {
-    const { CartItemJSX } = CartItemSetup();
+    const { CartItemJSX } = ProductButtons();
     const CartItemComponent = renderer.create(CartItemJSX).toJSON();
     expect(CartItemComponent).toMatchSnapshot(); 
+  });
+
+  it('should contain two buttons', () => {
+    const { CartItemComponent } = ProductButtons();
+    expect(CartItemComponent.find('ProductButton').length).toEqual(2);
   });
 });

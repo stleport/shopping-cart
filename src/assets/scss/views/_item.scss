@@ -13,15 +13,35 @@
   padding-bottom: 1.2rem;
 
   &__content {
+    // padding: .6rem;
+    flex-grow: 1;
+    border: none;
+    background: 0 0;
+    margin: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: 1em;
+    border-radius: 0;  
+  }
+    
+  &__title {
+    &--small {
+      font-size: 1.2rem;
+    }
+    
+    &--big {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__description {
+    flex-grow: 1;
     padding-bottom: .6rem;
   }
 
   &__pricing {
     color: #999;
-  }
-  
-  &__description {
-    padding: .8rem;
+    justify-content: flex-start;
   }
 
   &__extra {
@@ -32,15 +52,12 @@
     margin-top: 15px;
   }
 
-  &__pricing {
-    justify-content: flex-start;
-  }
-
   &__actions {
     display: flex;
     align-items: stretch;
     flex-flow: row nowrap;
-    justify-content: flex-end;
+    // justify-content: flex-end;
+    flex: initial;
   }
 
   &__image {
